@@ -33,8 +33,8 @@ async function ksqlquery() {
     //console.log(moreValues)
     //console.log(moreValues['@type'])
     //console.log(response['sourceDescription'])
-    var x = JSON.parse(response)
-    console.log(x)
+    // var x = JSON.parse(response)
+    // console.log(x)
     return response;
   }
 
