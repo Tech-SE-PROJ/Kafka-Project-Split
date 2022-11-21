@@ -24,7 +24,7 @@ async function ksqlquery() {
           // "key" will be obj1, obj2 ...
       }
   }
-  moreValues = Object.keys(values)
+  //moreValues = Object.keys(values)
     //response = Object.entries(response)
     //console.log(response.values)
     //console.log(Object.keys(values))
@@ -33,9 +33,12 @@ async function ksqlquery() {
     //console.log(moreValues)
     //console.log(moreValues['@type'])
     //console.log(response['sourceDescription'])
-    var x = JSON.parse(response)
-    console.log(x)
+    //var x = JSON.parse(response)
+    //console.log(values)
+    console.log(values.sourceDescription)
+    //console.log(x)
     return response;
+
   }
 
 module.exports = ksqlquery;
