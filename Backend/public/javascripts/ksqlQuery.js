@@ -17,13 +17,14 @@ async function ksqlquery() {
     .then(response => response.json())
     .then(result => result)
     .catch(error => console.log('error', error));
-    console.table(response)
     for (var key in response) {
       if (response.hasOwnProperty(key)) {
           var values = response[key];
           // "key" will be obj1, obj2 ...
       }
-  }
+    }
+    return values;
+  //console.table(values)
   //moreValues = Object.keys(values)
     //response = Object.entries(response)
     //console.log(response.values)
@@ -34,11 +35,47 @@ async function ksqlquery() {
     //console.log(moreValues['@type'])
     //console.log(response['sourceDescription'])
     //var x = JSON.parse(response)
-    //console.log(values)
-    console.log(values.sourceDescription)
-    //console.log(x)
+    console.log(values.sourceDescription.name)
+    console.log(values.sourceDescription.type)
+    console.log(values.sourceDescription.keyFormat)
+    console.log(values.sourceDescription.valueFormat)
+    console.log(values.sourceDescription.topic)
+    console.log(values.sourceDescription.partitions)
+    console.log(values.sourceDescription.replication)
+    console.log(values.sourceDescription.statement)
+    if(values.sourceDescription.clusterStatistics.type !== undefined)
+    {
+      for (var key in values.sourceDescription.clusterStatistics)
+      {
+        if (values.hasOwnProperty(key))
+          var keyStats = values[key];
+      }
+      console.log(keyStats.name) //date constructor
+      console.log(keyStats.host)
+      console.log(keyStats.value)
+      console.log(keyStats.timestamp)
+    }
+    else
+    {
+        console.log("clusterStatistics is empty")
+    }
+    if(values.sourceDescription.clusterErrorStats.type !== undefined)
+    {
+      for (var key in values.sourceDescription.clusterErrorStats)
+      {
+        if (values.hasOwnProperty(key))
+          var keyStats = values[key];
+      }
+      console.log(keyStats.name) //date constructor
+      console.log(keyStats.host)
+      console.log(keyStats.value)
+      console.log(keyStats.timestamp)
+    }
+    else
+    {
+      console.log("clusterErrorStats is empty")
+    }
     return response;
-
   }
 
 module.exports = ksqlquery;
