@@ -25,16 +25,6 @@ async function ksqlquery() {
     }
     return values;
   //console.table(values)
-  //moreValues = Object.keys(values)
-    //response = Object.entries(response)
-    //console.log(response.values)
-    //console.log(Object.keys(values))
-    //console.log(typeof(values))
-    //console.log(jsonVal)
-    //console.log(moreValues)
-    //console.log(moreValues['@type'])
-    //console.log(response['sourceDescription'])
-    //var x = JSON.parse(response)
     console.log(values.sourceDescription.name)
     console.log(values.sourceDescription.type)
     console.log(values.sourceDescription.keyFormat)
