@@ -23,7 +23,8 @@ async function ksqlquery() {
           // "key" will be obj1, obj2 ...
       }
     }
-    return values;
+    return result;
+    
   //console.table(values)
     console.log(values.sourceDescription.name)
     console.log(values.sourceDescription.type)

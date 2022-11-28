@@ -3,8 +3,8 @@ import './App.css';
 
 function App() {
   useEffect(() => {
-    fetch("<http://127.0.0.1:3000/ksql>")
-    .then((response) => response.json())
+    fetch("http://127.0.0.1:3000/ksql")
+    .then((response) => response)
     .then((response) => console.log(response))
     }
   )
