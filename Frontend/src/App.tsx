@@ -1,22 +1,23 @@
 import React, {useEffect} from 'react';
 import './App.css';
 
-function resp() {
-  fetch("http://127.0.0.1:3000/ksql")
-    .then((response) => response)
-    .then((response) => console.log(response))
+const QueryBackend = async () => {
+  const response = await fetch("http://127.0.0.1:3000/ksql", {mode:'cors'})
+  const backendResponse = await response.json();
+  console.log(backendResponse)
 }
-
-  
 
 function App() {
   useEffect(() => {
-    resp()
+    QueryBackend()
   });
-  
   return (
     <div className="App">
       <header className="App-header">
+        <div className="buttonIn">
+          <input type="text" id="enter" placeholder="Enter a topic"/>
+          <button id="query">Query</button>
+        </div>
       </header>
     </div>
   );

@@ -32,7 +32,43 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.buttonIn {
+  width: 300px;
+  position: relative;
+}
+
+input {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  outline: none;
+  height: 30px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+input:focus::placeholder {
+  /*makes placeholder disappear on focus*/
+  color:transparent;
+}
+
+button {
+  width: 150px;
+  position: absolute;
+  border-radius: 5px;
+  right: 72px;
+  z-index: 2;
+  border: none;
+  top: 92px;
+  height: 30px;
+  cursor: pointer;
+  color: white;
+  background-color: #1e90ff;
+  transform: translateX(2px);
 }

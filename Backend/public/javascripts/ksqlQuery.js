@@ -3,7 +3,6 @@ async function ksqlquery() {
     var myHeaders = new Headers();
   myHeaders.append("Authorization", "Basic RzdaSlUyNzNVSk1XWlFUWjovTFdnbW5Hd1FKMExycXBKVnBaMTQwNnJ1dmtNbHpyYkg2Wnp5THd1VmJYZTgyTTFTczFiRUJHTXQ4SGIrTlBm");
   myHeaders.append("Content-Type", "text/plain", "Access-Control-Allow-Origin: *");
-  myHeaders.append("Content-Type", "")
   
   var raw = "{\r\n    \"ksql\": \"DESCRIBE USERS EXTENDED;\"\r\n}";
   
@@ -17,16 +16,14 @@ async function ksqlquery() {
   
     var response = await fetch("https://pksqlc-w6265.us-east-2.aws.confluent.cloud:443/ksql", requestOptions)
     .then(response => response.json())
-  //  .then(result => result)
     .catch(error => console.log('error', error));
     for (var key in response) {
       if (response.hasOwnProperty(key)) {
           var values = response[key];
-          // "key" will be obj1, obj2 ...
       }
     }
     
-    return response;
+    return values;
 
   //console.table(values)
     console.log(values.sourceDescription.name)
