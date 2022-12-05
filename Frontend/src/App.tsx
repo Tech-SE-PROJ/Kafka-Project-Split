@@ -1,24 +1,23 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, Component} from 'react';
 import './App.css';
+import ButtonLoader from "./FetchButton";
+import QueryBackend from "./QueryBackend";
 
-const QueryBackend = async () => {
-  const response = await fetch("http://127.0.0.1:3000/ksql", {mode:'cors'})
-  const backendResponse = await response.json();
-  console.log(backendResponse)
-}
+
 
 function App() {
+  const comp = new Component(QueryBackend)
   useEffect(() => {
-    QueryBackend()
+    comp.()
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <div className="buttonIn">
-          <input type="text" id="enter" placeholder="Enter a topic"/>
-          <button id="query" onClick={QueryBackend}>Query</button>
-        </div>
+      <div className="buttonIn">
+        <input type="text" id="enter" placeholder="Enter a topic"/>
+        <ButtonLoader />
+      </div>
       </header>
     </div>
   );
