@@ -10,13 +10,14 @@ const QueryBackend = async () => {
 function App() {
   useEffect(() => {
     QueryBackend()
-  });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <div className="buttonIn">
           <input type="text" id="enter" placeholder="Enter a topic"/>
-          <button id="query">Query</button>
+          <button id="query" onClick={QueryBackend}>Query</button>
         </div>
       </header>
     </div>
