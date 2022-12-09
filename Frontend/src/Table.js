@@ -6,6 +6,16 @@ class Table extends React.Component {
        super(props)
        this.state = {
           students: [
+         //  { name:
+         //    type:
+         //    keyFormat:
+         //    valueFormat:
+         //    topic:
+         //    partitions:
+         //    replication:
+         //    statement:
+         //    sourceConstraints:
+         //    }
              { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
              { id: 2, name: 'Ali', age: 19, email: 'ali@email.com' },
              { id: 3, name: 'Saad', age: 16, email: 'saad@email.com' },
@@ -38,7 +48,7 @@ class Table extends React.Component {
     render() {
        return (
           <div>
-             <h1 id='title'>React Dynamic Table</h1>
+          <br/>
              <table id='students'>
                 <tbody>
                    <tr>{this.renderTableHeader()}</tr>
