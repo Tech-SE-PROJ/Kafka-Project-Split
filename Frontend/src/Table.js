@@ -19,7 +19,7 @@ class Table extends React.Component {
                   topic, partitions, replication, statement,
                   sourceConstraints, clusterError, clusterStatistics } = k 
           return (
-             <tr key={index}>
+             <tr id='streamTableBodyRow' key={index}>
                 <td>{name}</td>
                 <td>{type}</td>
                 <td>{keyFormat}</td>
@@ -30,13 +30,13 @@ class Table extends React.Component {
                 <td>{statement}</td>
                 {!sourceConstraints ? 
                   <td>{sourceConstraints}</td> :
-                  null}
+                  <td>Empty</td>}
                 {!clusterStatistics ? 
                   <td>{clusterStatistics}</td> :
-                  null}
+                  <td>Empty</td>}
                 {!clusterError ? 
                   <td>{clusterError}</td> :
-                  null}
+                  <td>Empty</td>}
              </tr>
           )
        })
@@ -46,9 +46,9 @@ class Table extends React.Component {
        return (
           <div>
           <br/>
-             <table id='stream'>
-                <tbody>
-                   <tr>{this.renderTableHeader()}</tr>
+             <table className='streamTable' border='3'>
+                <tbody className='streamBody'>
+                   <tr className='streamTableHeaderRow'>{this.renderTableHeader()}</tr>
                    {this.renderTableData()}
                 </tbody>
              </table>
