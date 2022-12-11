@@ -30,7 +30,7 @@ async function ksqlquery(input) {
       var values = response[key];
     }
   }
-  console.log(values)
+  //console.log(values)
   return values;
 }
 
