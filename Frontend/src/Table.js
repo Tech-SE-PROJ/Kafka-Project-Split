@@ -1,11 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-
 
 class Table extends React.Component {
     constructor(props) {
        super(props)
-       console.log(props)
        this.state = { queryData: [props] };
     }
  
@@ -22,7 +19,6 @@ class Table extends React.Component {
                   topic, partitions, replication, statement,
                   sourceConstraints, clusterError, clusterStatistics } = k 
           return (
-            //  <tr key={id}>\
              <tr key={index}>
                 <td>{name}</td>
                 <td>{type}</td>
@@ -33,14 +29,14 @@ class Table extends React.Component {
                 <td>{replication}</td>
                 <td>{statement}</td>
                 {!sourceConstraints ? 
-                <td>{sourceConstraints}</td> :
-                "Empty"}
+                  <td>{sourceConstraints}</td> :
+                  null}
                 {!clusterStatistics ? 
                   <td>{clusterStatistics}</td> :
-                  "Empty" }
+                  null}
                 {!clusterError ? 
                   <td>{clusterError}</td> :
-                  "Empty"}
+                  null}
              </tr>
           )
        })
@@ -50,7 +46,7 @@ class Table extends React.Component {
        return (
           <div>
           <br/>
-             <table id='students'>
+             <table id='stream'>
                 <tbody>
                    <tr>{this.renderTableHeader()}</tr>
                    {this.renderTableData()}
@@ -60,11 +56,5 @@ class Table extends React.Component {
        )
     }
  }
- const root = ReactDOM.createRoot(
-   document.getElementById('root')
- ); //NOTE: Removed React.StrictMode below 
- root.render(
-   <Table />
- );
-//  ReactDOM.render(<Table />, document.getElementById('root'));
+
  export default Table;
