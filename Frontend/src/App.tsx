@@ -34,8 +34,10 @@ const convertObject = (queryData: any) => { //any is required, typescript won't 
   const clusterErrorDate = new Date()
   clusterStatsDate.toLocaleTimeString("en-US")
   clusterErrorDate.toLocaleTimeString("en-US")
-  clusterStats.timestamp = clusterStatsDate
-  clusterError.timestamp = clusterErrorDate
+  if(!clusterStats)
+    clusterStats.timestamp = clusterStatsDate
+  if(!clusterError)
+    clusterError.timestamp = clusterErrorDate
 
   const convertedData = {
     name: queryData.sourceDescription.name,
@@ -80,7 +82,7 @@ function App() {
     }
   }
 
-  return (
+  return ( 
       <div className="App">
         <header className="App-header">
           <div>
@@ -95,7 +97,7 @@ function App() {
         {renderTable === true && <Table {... tableData} />}
       </div>
         </header>
-      </div>
+      </div> 
     );
 }
 export default App;
