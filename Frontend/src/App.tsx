@@ -15,9 +15,7 @@ const convertObject = (queryData: any) => { //any is required, typescript won't 
         clusterStats = queryData[key];
     }
     console.log(clusterStats)
-  }
-  else
-    console.log("clusterStatistics is empty");
+  } //removed else here, unnecessary for this
 
   if (queryData.sourceDescription.clusterErrorStats.type !== undefined) 
   {
@@ -26,9 +24,7 @@ const convertObject = (queryData: any) => { //any is required, typescript won't 
       if (queryData.hasOwnProperty(key2)) 
         clusterError = queryData[key2];
     }
-  } 
-  else
-    console.log("clusterErrorStats is empty");
+  } //removed else here, unnecessary for this
 
   const clusterStatsDate = new Date() /* converting unix timestamp to an appropriate date */
   const clusterErrorDate = new Date()
@@ -60,13 +56,21 @@ function App() {
   const[renderHeader, setHeader] = useState("")
   const[renderTable, setTable] = useState(false)
   const[tableData, sendTable] = useState({})
+  
   useEffect(() => { //runs only once to prevent infinite loop!!
     setHeader("Input a new topic or stream.")
   }, [])
-  // useEffect(() => {
-  //   QueryBackend(searchText) 
-  // }, []);
+
+  const ClearField = () => {
+    setSearchText('')
+  }
+
   const QueryBackend = async (input: string) => {
+    const button = document.getElementById('query');
+    button?.addEventListener('click', function handleClick() {
+      if(renderTable)
+        setTable(false)
+    });
     const response = await fetch(
       `http://127.0.0.1:3000/ksql?table=${input}`, { mode:'cors' })
     const backendResponse = await response.json();
@@ -89,7 +93,7 @@ function App() {
             <h1> {renderHeader} </h1>
           </div>
           <div className="buttonIn">
-            <input type="text" id="enter" placeholder="Enter a topic/stream" value={searchText} 
+            <input type="text" id="enter" onClick={ClearField} placeholder="Enter a topic/stream" value={searchText} 
             onChange={(e) => {setSearchText(e.target.value)}}/>
             <button id="query" onClick={() => QueryBackend(searchText)}>Query</button>
           </div>
