@@ -1,29 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 
 class Table extends React.Component {
     constructor(props) {
        super(props)
-       debugger;
        console.log(props)
        this.state = { queryData: [props] };
-         //  queryData: [ props ]
-         //  { name: ,
-         //    type: ,
-         //    keyFormat: ,
-         //    valueFormat: ,
-         //    topic: ,
-         //    partitions: ,
-         //    replication: ,
-         //    statement: ,
-         //    sourceConstraints: ,
-         //    }
-            //  { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
-            //  { id: 2, name: 'Ali', age: 19, email: 'ali@email.com' },
-            //  { id: 3, name: 'Saad', age: 16, email: 'saad@email.com' },
-            //  { id: 4, name: 'Asad', age: 25, email: 'asad@email.com' }
-      //  }
     }
  
     renderTableHeader() {
@@ -40,11 +23,24 @@ class Table extends React.Component {
                   sourceConstraints, clusterError, clusterStatistics } = k 
           return (
             //  <tr key={id}>\
-             <tr>
+             <tr key={index}>
                 <td>{name}</td>
                 <td>{type}</td>
                 <td>{keyFormat}</td>
                 <td>{valueFormat}</td>
+                <td>{topic}</td>
+                <td>{partitions}</td>
+                <td>{replication}</td>
+                <td>{statement}</td>
+                {!sourceConstraints ? 
+                <td>{sourceConstraints}</td> :
+                "Empty"}
+                {!clusterStatistics ? 
+                  <td>{clusterStatistics}</td> :
+                  "Empty" }
+                {!clusterError ? 
+                  <td>{clusterError}</td> :
+                  "Empty"}
              </tr>
           )
        })
@@ -64,6 +60,11 @@ class Table extends React.Component {
        )
     }
  }
- 
- ReactDOM.render(<Table />, document.getElementById('root'));
+ const root = ReactDOM.createRoot(
+   document.getElementById('root')
+ ); //NOTE: Removed React.StrictMode below 
+ root.render(
+   <Table />
+ );
+//  ReactDOM.render(<Table />, document.getElementById('root'));
  export default Table;
