@@ -14,7 +14,6 @@ const convertObject = (queryData: any) => { //any is required, typescript won't 
       if (queryData.hasOwnProperty(key)) 
         clusterStats = queryData[key];
     }
-    console.log(clusterStats)
   } //removed else here, unnecessary for this
 
   if (queryData.sourceDescription.clusterErrorStats.type !== undefined) 
