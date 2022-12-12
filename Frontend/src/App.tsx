@@ -56,7 +56,7 @@ function App() {
   const[renderHeader, setHeader] = useState("")
   const[renderTable, setTable] = useState(false)
   const[tableData, sendTable] = useState({})
-  
+
   useEffect(() => { //runs only once to prevent infinite loop!!
     setHeader("Input a new topic or stream.")
   }, [])
@@ -93,8 +93,8 @@ function App() {
             <h1> {renderHeader} </h1>
           </div>
           <div className="buttonIn">
-            <input type="text" id="enter" onClick={ClearField} placeholder="Enter a topic/stream" value={searchText} 
-            onChange={(e) => {setSearchText(e.target.value)}}/>
+            <input type="text" id="enter" onClick={ClearField} placeholder="Enter a topic/stream" 
+            value={searchText} onChange={(e) => {setSearchText(e.target.value)}}/>
             <button id="query" onClick={() => QueryBackend(searchText)}>Query</button>
           </div>
       <div>
