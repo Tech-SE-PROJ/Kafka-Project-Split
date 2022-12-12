@@ -9,7 +9,6 @@ async function ksqlquery(input) {
     "text/plain",
     "Access-Control-Allow-Origin: *"
   );
-    console.log(input)
   var raw = `{\r\n    "ksql": "DESCRIBE ${input} EXTENDED;"\r\n}`;
 
   var requestOptions = {
